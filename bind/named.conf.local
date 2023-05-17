@@ -1,0 +1,11 @@
+zone "nglp.tech" IN {
+    type master;
+    file "/etc/bind/fwd.nglp.tech";     # zone file path
+    allow-update { none; };
+};
+
+zone "150.0.10.in-addr.arpa" IN {
+    type master;
+    file "/etc/bind/rvd.10.0.150";      # subnet 10.0.150.0/24
+    allow-update { none; };
+};
