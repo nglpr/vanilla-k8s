@@ -1,0 +1,28 @@
+acl "trusted" {
+        10.0.150.250;   #ns1
+        10.0.150.0/24;  #this network
+        10.0.151.0/24;
+        10.0.152.0/24;
+        10.0.24.0/24;   #mgmt bastion
+        10.0.0.0/8;
+};
+
+options {
+        directory "/var/cache/bind";
+        recursion yes;                 # enables resursive queries
+        allow-query {
+                localhost;
+                trusted;
+        };
+        allow-recursion { trusted; };  # allows recursive queries from "trusted" ACL
+        listen-on { 10.0.150.250; };   # ns1 IP address
+        allow-transfer { none; };      # disable zone transfers by default
+        forwarders {
+                1.1.1.1;
+                #9.9.9.9;
+                10.0.4.2;
+        };
+        dnssec-validation auto;
+
+        // listen-on-v6 { any; };
+};
