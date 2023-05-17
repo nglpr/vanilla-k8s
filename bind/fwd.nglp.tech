@@ -1,0 +1,51 @@
+$TTL    604800
+@       IN      SOA     ns1.nglp.tech. root.nglp.tech. (
+                             15         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+; NS Record for Nameserver
+@               IN      NS      ns1.nglp.tech.
+
+; A Records for Nameserver
+ns1             IN      A       10.0.150.250
+
+; A records for domain names
+; Vanilla k8s section
+endpoint.k8s    IN      A       10.0.150.10
+endpoint.k8s    IN      A       10.0.150.11
+master0.k8s     IN      A       10.0.150.10
+master1.k8s     IN      A       10.0.150.11
+worker0.k8s     IN      A       10.0.150.12
+worker1.k8s     IN      A       10.0.150.13
+worker2.k8s     IN      A       10.0.150.14
+*.k8s           IN      A       10.0.150.100
+
+; openstack section
+
+vio-mgr         IN      A       10.0.151.27
+
+; OKD section
+master0.okd     IN      A       10.0.150.15
+master1.okd     IN      A       10.0.150.16
+master2.okd     IN      A       10.0.150.17
+worker0.okd     IN      A       10.0.150.18
+worker1.okd     IN      A       10.0.150.19
+api.okd         IN      A       10.0.150.50
+api-int.okd     IN      A       10.0.150.50
+*.apps.okd      IN      A       10.0.150.50
+bootstrap.okd   IN      A       10.0.150.90
+nfs             IN      A       10.0.150.91
+
+; Genereal Purpose
+sebastion       IN      A       10.0.150.5
+vsan-fs1        IN      A       10.0.150.201
+vsan-fs2        IN      A       10.0.150.202
+vsan-fs3        IN      A       10.0.150.203
+vsan-fs4        IN      A       10.0.150.204
+
+;outside nsx
+vcsa            IN      A       10.0.24.220
+nsx             IN      A       10.0.22.185
